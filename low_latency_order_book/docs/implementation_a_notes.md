@@ -35,11 +35,16 @@ g++ -O2 -std=c++17 src/main.cpp src/order_book_a.cpp -Iinclude -o bench.exe
 
 ---
 
-## 4. Empirical Benchmark Results (Median of 5 Runs)
-- **Total Execution Time:** `210.077 ms`
-- **Avg Latency per `add_order`:** `188.067 ns`
-- **Avg Latency per `cancel_order`:** `290.431 ns`
-- **Avg Latency per `get_bbo`:** `24.917 ns`
+## 4. Empirical Benchmark Results (Median of 5 Runs - Linux/WSL)
+- **Total Execution Time:** `165.403 ms`
+- **Avg Latency per `add_order`:** `138.955 ns`
+- **Avg Latency per `cancel_order`:** `234.318 ns`
+- **Avg Latency per `get_bbo`:** `20.349 ns`
+
+**Linux `perf stat` Metrics (5 runs):**
+- **Task-Clock:** `943.79 msec` (±1.45%)
+- **Page Faults:** `22,774` (allocator churn from node insertions)
+- *Note on PMU Events (cycles, instructions, cache misses): Virtualized PMU is disabled by default in WSL2, producing `<not supported>` for hardware counters.*
 
 **Final State Verification:**
 - **Best Bid:** `99.99 x 2722`
