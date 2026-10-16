@@ -1,7 +1,7 @@
 # Low-Latency Order Book (Capstone Project)
 
-**Team Members:** Ayush Kumar and Nandani Kumari  
-**Email:** ayush.34bcs10474@sst.scaler.com and nandani.24bcs10317@sst.scaler.com  
+**Team Members:** Ayush Kumar Patra and Nandani Kumari  
+**Email:** ayush.24bcs10474@sst.scaler.com and nandani.24bcs10317@sst.scaler.com  
 
 ---
 
