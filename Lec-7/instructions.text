@@ -1,0 +1,124 @@
+
+kartik.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <main>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   rbp
+   5:	48 89 e5             	mov    rbp,rsp
+   8:	41 57                	push   r15
+   a:	41 56                	push   r14
+   c:	41 55                	push   r13
+   e:	41 54                	push   r12
+  10:	53                   	push   rbx
+  11:	48 83 ec 28          	sub    rsp,0x28
+  15:	64 48 8b 04 25 28 00 	mov    rax,QWORD PTR fs:0x28
+  1c:	00 00 
+  1e:	48 89 45 c8          	mov    QWORD PTR [rbp-0x38],rax
+  22:	31 c0                	xor    eax,eax
+  24:	48 89 e0             	mov    rax,rsp
+  27:	48 89 c3             	mov    rbx,rax
+  2a:	c7 45 b4 0a 00 00 00 	mov    DWORD PTR [rbp-0x4c],0xa
+  31:	48 8d 45 b4          	lea    rax,[rbp-0x4c]
+  35:	48 89 c6             	mov    rsi,rax
+  38:	48 8d 05 00 00 00 00 	lea    rax,[rip+0x0]        # 3f <main+0x3f>
+  3f:	48 89 c7             	mov    rdi,rax
+  42:	e8 00 00 00 00       	call   47 <main+0x47>
+  47:	8b 45 b4             	mov    eax,DWORD PTR [rbp-0x4c]
+  4a:	48 63 d0             	movsxd rdx,eax
+  4d:	48 83 ea 01          	sub    rdx,0x1
+  51:	48 89 55 b8          	mov    QWORD PTR [rbp-0x48],rdx
+  55:	48 63 d0             	movsxd rdx,eax
+  58:	49 89 d6             	mov    r14,rdx
+  5b:	41 bf 00 00 00 00    	mov    r15d,0x0
+  61:	48 63 d0             	movsxd rdx,eax
+  64:	49 89 d4             	mov    r12,rdx
+  67:	41 bd 00 00 00 00    	mov    r13d,0x0
+  6d:	48 98                	cdqe   
+  6f:	48 8d 14 85 00 00 00 	lea    rdx,[rax*4+0x0]
+  76:	00 
+  77:	b8 10 00 00 00       	mov    eax,0x10
+  7c:	48 83 e8 01          	sub    rax,0x1
+  80:	48 01 d0             	add    rax,rdx
+  83:	be 10 00 00 00       	mov    esi,0x10
+  88:	ba 00 00 00 00       	mov    edx,0x0
+  8d:	48 f7 f6             	div    rsi
+  90:	48 6b c0 10          	imul   rax,rax,0x10
+  94:	48 89 c1             	mov    rcx,rax
+  97:	48 81 e1 00 f0 ff ff 	and    rcx,0xfffffffffffff000
+  9e:	48 89 e2             	mov    rdx,rsp
+  a1:	48 29 ca             	sub    rdx,rcx
+  a4:	48 39 d4             	cmp    rsp,rdx
+  a7:	74 12                	je     bb <main+0xbb>
+  a9:	48 81 ec 00 10 00 00 	sub    rsp,0x1000
+  b0:	48 83 8c 24 f8 0f 00 	or     QWORD PTR [rsp+0xff8],0x0
+  b7:	00 00 
+  b9:	eb e9                	jmp    a4 <main+0xa4>
+  bb:	48 89 c2             	mov    rdx,rax
+  be:	81 e2 ff 0f 00 00    	and    edx,0xfff
+  c4:	48 29 d4             	sub    rsp,rdx
+  c7:	48 89 c2             	mov    rdx,rax
+  ca:	81 e2 ff 0f 00 00    	and    edx,0xfff
+  d0:	48 85 d2             	test   rdx,rdx
+  d3:	74 10                	je     e5 <main+0xe5>
+  d5:	25 ff 0f 00 00       	and    eax,0xfff
+  da:	48 83 e8 08          	sub    rax,0x8
+  de:	48 01 e0             	add    rax,rsp
+  e1:	48 83 08 00          	or     QWORD PTR [rax],0x0
+  e5:	48 89 e0             	mov    rax,rsp
+  e8:	48 83 c0 03          	add    rax,0x3
+  ec:	48 c1 e8 02          	shr    rax,0x2
+  f0:	48 c1 e0 02          	shl    rax,0x2
+  f4:	48 89 45 c0          	mov    QWORD PTR [rbp-0x40],rax
+  f8:	48 89 dc             	mov    rsp,rbx
+  fb:	b8 00 00 00 00       	mov    eax,0x0
+ 100:	48 8b 55 c8          	mov    rdx,QWORD PTR [rbp-0x38]
+ 104:	64 48 2b 14 25 28 00 	sub    rdx,QWORD PTR fs:0x28
+ 10b:	00 00 
+ 10d:	74 05                	je     114 <main+0x114>
+ 10f:	e8 00 00 00 00       	call   114 <main+0x114>
+ 114:	48 8d 65 d8          	lea    rsp,[rbp-0x28]
+ 118:	5b                   	pop    rbx
+ 119:	41 5c                	pop    r12
+ 11b:	41 5d                	pop    r13
+ 11d:	41 5e                	pop    r14
+ 11f:	41 5f                	pop    r15
+ 121:	5d                   	pop    rbp
+ 122:	c3                   	ret    
+
+0000000000000123 <_Z41__static_initialization_and_destruction_0ii>:
+ 123:	f3 0f 1e fa          	endbr64 
+ 127:	55                   	push   rbp
+ 128:	48 89 e5             	mov    rbp,rsp
+ 12b:	48 83 ec 10          	sub    rsp,0x10
+ 12f:	89 7d fc             	mov    DWORD PTR [rbp-0x4],edi
+ 132:	89 75 f8             	mov    DWORD PTR [rbp-0x8],esi
+ 135:	83 7d fc 01          	cmp    DWORD PTR [rbp-0x4],0x1
+ 139:	75 3b                	jne    176 <_Z41__static_initialization_and_destruction_0ii+0x53>
+ 13b:	81 7d f8 ff ff 00 00 	cmp    DWORD PTR [rbp-0x8],0xffff
+ 142:	75 32                	jne    176 <_Z41__static_initialization_and_destruction_0ii+0x53>
+ 144:	48 8d 05 00 00 00 00 	lea    rax,[rip+0x0]        # 14b <_Z41__static_initialization_and_destruction_0ii+0x28>
+ 14b:	48 89 c7             	mov    rdi,rax
+ 14e:	e8 00 00 00 00       	call   153 <_Z41__static_initialization_and_destruction_0ii+0x30>
+ 153:	48 8d 05 00 00 00 00 	lea    rax,[rip+0x0]        # 15a <_Z41__static_initialization_and_destruction_0ii+0x37>
+ 15a:	48 89 c2             	mov    rdx,rax
+ 15d:	48 8d 05 00 00 00 00 	lea    rax,[rip+0x0]        # 164 <_Z41__static_initialization_and_destruction_0ii+0x41>
+ 164:	48 89 c6             	mov    rsi,rax
+ 167:	48 8b 05 00 00 00 00 	mov    rax,QWORD PTR [rip+0x0]        # 16e <_Z41__static_initialization_and_destruction_0ii+0x4b>
+ 16e:	48 89 c7             	mov    rdi,rax
+ 171:	e8 00 00 00 00       	call   176 <_Z41__static_initialization_and_destruction_0ii+0x53>
+ 176:	90                   	nop
+ 177:	c9                   	leave  
+ 178:	c3                   	ret    
+
+0000000000000179 <_GLOBAL__sub_I_main>:
+ 179:	f3 0f 1e fa          	endbr64 
+ 17d:	55                   	push   rbp
+ 17e:	48 89 e5             	mov    rbp,rsp
+ 181:	be ff ff 00 00       	mov    esi,0xffff
+ 186:	bf 01 00 00 00       	mov    edi,0x1
+ 18b:	e8 93 ff ff ff       	call   123 <_Z41__static_initialization_and_destruction_0ii>
+ 190:	5d                   	pop    rbp
+ 191:	c3                   	ret    
