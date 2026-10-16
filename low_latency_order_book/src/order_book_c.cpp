@@ -5,13 +5,8 @@ OrderBookC::OrderBookC() : price_quantities_(15001, 0), best_bid_tick_(-1), best
 void OrderBookC::add_order(uint64_t id, Side side, double price, long qty) {
     int price_tick = static_cast<int>(std::round(price * 100.0));
 
-    // Store order for O(1) cancellation lookup
     orders_[id] = {side, price_tick, qty};
-
-    // Direct array update
     price_quantities_[price_tick] += qty;
-
-    // Update BBO trackers
     if (side == Side::Buy) {
         if (best_bid_tick_ == -1 || price_tick > best_bid_tick_) {
             best_bid_tick_ = price_tick;
@@ -38,10 +33,8 @@ bool OrderBookC::cancel_order(uint64_t id) {
         price_quantities_[price_tick] = 0;
     }
 
-    // If price level quantity drops to zero, update best bid/ask trackers
     if (price_quantities_[price_tick] == 0) {
         if (order.side == Side::Buy && price_tick == best_bid_tick_) {
-            // Scan downwards to find the next active bid tick
             int new_best = -1;
             for (int t = price_tick - 1; t >= 5000; --t) {
                 if (price_quantities_[t] > 0) {
@@ -51,7 +44,6 @@ bool OrderBookC::cancel_order(uint64_t id) {
             }
             best_bid_tick_ = new_best;
         } else if (order.side == Side::Sell && price_tick == best_ask_tick_) {
-            // Scan upwards to find the next active ask tick
             int new_best = 999999;
             for (int t = price_tick + 1; t <= 15000; ++t) {
                 if (price_quantities_[t] > 0) {

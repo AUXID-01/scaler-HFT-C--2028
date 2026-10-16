@@ -175,10 +175,10 @@ int main(int argc, char* argv[]) {
             run_benchmark_for_impl<OrderBookC>("C");
         }
         else {
-            std::cout << "Unknown implementation. Use A or B." << std::endl;
+            std::cout << "Unknown implementation. Use A, B, or C." << std::endl;
         }
     } else {
-        std::cout << "Usage: ./bench [--verify | --impl A|B]" << std::endl;
+        std::cout << "Usage: ./bench [--verify | --impl A|B|C]" << std::endl;
     }
     return 0;
 }

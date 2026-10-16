@@ -16,13 +16,10 @@ private:
         long qty;
     };
 
-    // Fast order lookup for cancellations: Order ID -> OrderInfo
     std::unordered_map<uint64_t, OrderInfo> orders_;
 
-    // Contiguous array/vector for price levels (indices 5000 to 15000)
     std::vector<long> price_quantities_;
 
-    // Track Best Bid and Best Ask ticks for O(1) BBO retrieval
     int best_bid_tick_;
     int best_ask_tick_;
 
