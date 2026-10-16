@@ -13,4 +13,5 @@ add_executable(bench
     src/main.cpp 
     src/order_book_a.cpp
     src/order_book_b.cpp
+    src/order_book_c.cpp
 )

@@ -6,6 +6,7 @@
 #include <algorithm>
 #include "order_book_a.hpp"
 #include "order_book_b.hpp"
+#include "order_book_c.hpp"
 
 struct Operation {
     int type; // 0: add, 1: cancel, 2: bbo
@@ -132,7 +133,7 @@ void run_benchmark_for_impl(const std::string& impl_name) {
 }
 
 void run_verify() {
-    std::cout << "Running correctness test for Implementations A & B..." << std::endl;
+    std::cout << "Running correctness test for Implementations A, B & C..." << std::endl;
     
     OrderBookA bookA;
     bookA.add_order(1, Side::Buy, 98.50, 10);
@@ -144,9 +145,16 @@ void run_verify() {
     bookB.add_order(2, Side::Sell, 101.50, 20);
     auto bboB = bookB.get_bbo();
 
-    if (bboA.bid_price == bboB.bid_price && bboA.ask_price == bboB.ask_price) {
+    OrderBookC bookC;
+    bookC.add_order(1, Side::Buy, 98.50, 10);
+    bookC.add_order(2, Side::Sell, 101.50, 20);
+    auto bboC = bookC.get_bbo();
+
+    if (bboA.bid_price == bboB.bid_price && bboA.ask_price == bboB.ask_price &&
+        bboA.bid_price == bboC.bid_price && bboA.ask_price == bboC.ask_price) {
         std::cout << "Implementation A: PASS" << std::endl;
         std::cout << "Implementation B: PASS" << std::endl;
+        std::cout << "Implementation C: PASS" << std::endl;
         std::cout << "All implementations agree!" << std::endl;
     } else {
         std::cout << "Correctness mismatch between implementations!" << std::endl;
@@ -162,7 +170,11 @@ int main(int argc, char* argv[]) {
             run_benchmark_for_impl<OrderBookA>("A");
         } else if (impl == "B") {
             run_benchmark_for_impl<OrderBookB>("B");
-        } else {
+        }
+        else if (impl == "C") {
+            run_benchmark_for_impl<OrderBookC>("C");
+        }
+        else {
             std::cout << "Unknown implementation. Use A or B." << std::endl;
         }
     } else {
